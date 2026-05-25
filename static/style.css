@@ -27,6 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-self: flex-start;
 }
 
 .search-form {
@@ -97,7 +98,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* Usuwamy stąd overflow-y, jeśli chcesz, żeby cała strona się przewijała */
+    align-self: flex-start;
 }
 
 .container-right h1 {
