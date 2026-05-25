@@ -16,6 +16,12 @@
             <input type="text" required size="40" name="kod">
             <button type="submit">Generuj</button>
         </div>
+        
+        {% if error_message %}
+            <div class="alert-error" style="background-color: #ffcccc; color: #cc0000; padding: 10px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #cc0000;">
+                <strong>Błąd!</strong> {{ error_message }}
+            </div>
+        {% endif %}
     </form>
 
     <div class="iframe-container">
