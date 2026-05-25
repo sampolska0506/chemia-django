@@ -1,0 +1,164 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chemia</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container-left" style="height: 100%; width: 70%; float: left">
+    <form action="/main/" method="GET">
+        <h2>Wprowadź kod smile:</h2>
+        <br/>
+        <div class="search-group">
+            <input type="text" size="40" name="kod">
+            <button type="submit">Generuj</button>
+        </div>
+    </form>
+
+    <div class="iframe-container">
+        <form action="/main/" type="GET">
+            <div class="buttons">
+                <button value="2d" name="view">2D</button>
+                <button value="3d" name="view">3D</button>
+            </div>
+        </form>
+        {% if viewOption == "3d" %}
+        	<iframe src="{% static "./molekula.html" %}"></iframe>
+            <a href="/chemia/" target="_blank">Otwórz w nowym oknie</a>
+        {% endif %}
+
+
+        {% if viewOption == "2d" %}
+        	<img src="/static/mol2d.png" alt="Zdjęcie 2D">
+            <a href="/static/mol2d.png" download>Pobierz grafikę</a>
+        {% endif %}
+
+    </div>
+</div>
+
+<div class="container-right" style="height: 100%; width: 30%; float: right">
+    <h1>Przykładowe wzory smile:</h1>
+    <ol class="smile-examples">
+        <li>C</li>
+        <li>CCC</li>
+        <li>C1CCC1</li>
+        <li>CC(=O)CC</li>
+        <li>CCCC1CC1</li>
+    </ol>
+
+<div class="categories-container">
+    <form action="/main/" method="GET">
+        <label>Węgle:</label>
+            <div class="select-group">
+            <select name="kod">
+                <option value="C">Metan</option>
+                <option value="CC">Etan</option>
+                <option value="CCC">Propan</option>
+                <option value="CCCC">Butan</option>
+                <option value="CCCCC">Pentan</option>
+                <option value="CCCCCC">Heksan</option>
+                <option value="CCCCCCC">Haptan</option>
+                <option value="CCCCCCCC">Oktan</option>
+                <option value="CCCCCCCCC">Nonan</option>
+                <option value="CCCCCCCCCC">Dekan</option>
+            </select>
+        <button type="submit">Wyświetl</button>
+        </div>
+    </form>
+
+    <form action="/main/" method="GET">
+        <label>Alkohole:</label>
+        <div class="select-group">
+            <select name="kod">
+                <option value="CO">Metanol</option>
+                <option value="CCO">Etanol</option>
+                <option value="CC(O)C">Izopropanol</option>
+                <option value="OCC(O)CO">Glicerol</option>
+                <option value="CCCCCO">Alkohol amylowy</option>
+                <option value="CC(C)CCCC(C)C1CCC2C1(CCC3C2CC=C4C3(CCC(C4)O)C)C">Cholesterol</option>
+                <option value="OCC(O)C(O)CO">Erytrytol</option>
+                <option value="C1(C(C(C(C(C1O)O)O)O)O)O">Inozytol</option>
+            </select>
+            <button type="submit">Wyświetl</button>
+        </div>
+    </form>
+
+    <form action="/main/" method="GET">
+        <label>Kwasy:</label>
+        <div class="select-group">
+            <select name="kod">
+                <option value="CCC(=O)O">Kwas propionowy</option>
+                <option value="CC(O)C(=O)O">Kwas mlekowy</option>
+                <option value="C(C(C(=O)O)O)C(=O)O">Kwas jabłkowy</option>
+                <option value="c1ccc(c(c1)C(=O)O)O">Kwas salicylowy</option>
+                <option value="C(=O)O">Kwas mrówkowy</option>
+                <option value="CC(=O)O">Kwas octowy</option>
+                <option value="OC(=O)CC(O)(CC(=O)O)C(=O)O">Kwas cytrynowy</option>
+                <option value="CCCC(=O)O">Kwas masłowy</option>
+                <option value="C(=O)(C(=O)O)O">Kwas szczawiowy</option>
+                <option value="OS(=O)(=O)O">Kwas siarkowy</option>
+                <option value="OP(=O)(O)O">Kwas fosforowy</option>
+            </select>
+            <button type="submit">Wyświetl</button>
+        </div>
+    </form>
+
+    <form action="/main/" method="GET">
+        <label>Pojedyncze pierwiastki:</label>
+        <div class="select-group">
+            <select name="kod">
+                <option value="I">Jod</option>
+                <option value="N">Azot</option>
+                <option value="O">Tlen</option>
+                <option value="P">Potas</option>
+                <option value="S">Siarka</option>
+                <option value="B">Bor</option>
+                <option value="C">Węgiel</option>
+            </select>
+            <button type="submit">Wyświetl</button>
+        </div>
+    </form>
+
+    <form action="/main/" method="GET">
+        <label>Ciągi: </label>
+        <div class="select-group">
+            <select name="kod">
+                <option value="IIIIIIIIIIIIIIIIIIIIIIIIII">Jodów</option>
+                <option value="NNNNNNNNNNNNNNNNNNNNNNNNNN">Azotów</option>
+                <option value="OOOOOOOOOOOOOOOOOOOOOOOOOO">Tlenów</option>
+                <option value="PPPPPPPPPPPPPPPPPPPPPPPPPP">Potasów</option>
+                <option value="SSSSSSSSSSSSSSSSSSSSSSSSSS">Siarek</option>
+                <option value="BBBBBBBBBBBBBBBBBBBBBBBBBB">Borów</option>
+                <option value="CCCCCCCCCCCCCCCCCCCCCCCCCC">Węgli</option>
+            </select>
+            <button type="submit">Wyświetl</button>
+        </div>
+    </form>
+
+    <form action="/main/" method="GET">
+        <label>Więcej:</label>
+            <div class="select-group">
+            <select name="kod">
+                <option value="O1P2OP3OP1OP(O2)O3">Trójtlenek fosforu</option>
+                <option value="O1[As]2O[As]3O[As]1O[As](O2)O3">Trójtlenek arsenu</option>
+                <option value="O=P12OP3(=O)OP4(=O)O[P@@](=O)(O1)O[P@@](O2)(O3)O4">Pento-tlenek fosforu</option>
+                <option value="CC1(C(N2C(S1)C(C2=O)NC(=O)Cc3ccccc3)C(=O)O)C">Penicylina G (antybiotyk)</option>
+                <option value="CC(C)c1c(c(c(n1CCC(CC(CC(=O)O)O)O)c2ccc(cc2)F)c3ccccc3)C(=O)Nc4ccccc4">Atrowastatyna (lek na cholesterol)</option>
+                <option value="C1C2=CC3=C(C4=CC5=C(C(=N5)C=C6C(=C(C(=N6)C=C1N2)C)C)C)C4(C)C3(C)C">Kobalamina (witamina B12)</option>
+                <option value="CC(C)/C=C/CCCCCC(=O)NCC1=CC(=C(C=C1)O)OC">Kapsaicyna</option>
+                <option value="c1cc2ccc3ccc4ccc5ccc1c6c2c3c4c56">Fuleren</option>
+                <option value="C1COCCOCCOCCOCCOCCO1">Etern koronowy</option>
+                <option value="C1=CC(=C2C(=C1)C(=O)C(=C3C(=O)C4=C(C=C(C=C4)S(=O)(=O)O)N3)N2)S(=O)(=O)O">Indygokarmin (barwnik)</option>
+                <option value="C1N2CN3CN1CN(C2)C3">Heksamethylenotetramina</option>
+            </select>
+            <button type="submit">Wyświetl</button>
+            </div>
+    </form>
+</div>
+</div>
+
+</body>
+</html>

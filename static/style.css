@@ -1,0 +1,215 @@
+/* --- Podstawowe ustawienia --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f0f4f8;
+    color: #1e293b;
+    display: flex;
+    min-height: 100vh;
+    padding: 25px;
+    gap: 25px;
+}
+
+/* --- Kolumna lewa (Panel Główny) --- */
+.container-left {
+    flex: 6; /* Proporcja szerokości */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search-form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.search-form h3 {
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+.search-group {
+    display: flex;
+    gap: 10px;
+}
+
+.buttons {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    max-width: 550px; /* Dopasowane do szerokości iframe */
+    margin-bottom: -1px; /* Nakłada dół zakładki na ramkę poniżej */
+    z-index: 1;
+}
+
+/* Wygląd pojedynczej zakładki */
+.buttons button {
+    background-color: #e2e8f0; /* Kolor nieaktywnej zakładki */
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    border-bottom: none; /* Brak dolnej ramki, żeby łączyła się z dołem */
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-top-left-radius: 8px;   /* Zaokrąglenie tylko z góry */
+    border-top-right-radius: 8px;  /* Zaokrąglenie tylko z góry */
+    transition: all 0.2s ease;
+}
+
+/* Efekt po najechaniu myszką */
+.buttons button:hover {
+    background-color: #cbd5e1;
+    color: #1e293b;
+}
+
+/* Styl dla aktywnej zakładki (warto dodać tę klasę w JS do klikniętego przycisku) */
+.buttons button.active,
+.buttons button:focus { /* focus da tymczasowy efekt "aktywności" przy kliknięciu */
+    background-color: #ffffff; /* Białe tło, takie samo jak iframe */
+    color: #2563eb;            /* Główny kolor niebieski z Twojego projektu */
+    border-color: #e2e8f0;     /* Ramka pasująca do iframe */
+    border-bottom: 1px solid #ffffff; /* Maskowanie ramki pod spodem */
+    padding-bottom: 9px;       /* O 1px więcej, żeby idealnie przykryć ramkę iframe */
+}
+
+/* --- Kolumna prawa (Menu Wyboru) --- */
+.container-right {
+    flex: 4; /* Nieco szersza, aby zmieścić opisy i selecty */
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: calc(100vh - 50px);
+    overflow-y: auto; /* Przewijanie prawej kolumny, jeśli wykroczy poza ekran */
+}
+
+.container-right h1 {
+    font-size: 20px;
+    color: #0f172a;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* Lista prostych wzorów */
+.smile-examples {
+    list-style-position: inside;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.smile-examples li {
+    font-family: monospace;
+    font-size: 15px;
+    padding: 4px 0;
+    color: #334155;
+}
+
+/* Kontener na formularze kategorii */
+.categories-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.categories-container form {
+    background: #f8fafc;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.categories-container label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.select-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* --- Elementy interaktywne (Inputy, Selecty, Buttony) --- */
+input[type="text"], select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #fff;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+button[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* --- Wizualizacja cząsteczki --- */
+.iframe-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Rozciąga kontener do dołu ekranu */
+}
+
+iframe {
+    width: 100%;
+    max-width: 550px;
+    height: 550px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.iframe-container a {
+    margin-top: 15px;
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.iframe-container a:hover {
+    text-decoration: underline;
+}
