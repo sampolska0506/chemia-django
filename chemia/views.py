@@ -33,29 +33,37 @@ def main(request):
             'error_message': "Wprowadzono niepoprawny kod SMILES. Spróbuj ponownie!",
             'kod': kod
         })
+
+    try:
     
-    mol = Chem.AddHs(mol)
+        mol = Chem.AddHs(mol)
 
-    print("MOL: ", mol)
+        print("MOL: ", mol)
 
-    img = Draw.MolToImage(mol)
-    img.save('static/mol2d.png')
+        img = Draw.MolToImage(mol)
+        img.save('static/mol2d.png')
 
-    AllChem.EmbedMolecule(mol)
-    AllChem.UFFOptimizeMolecule(mol)
+        AllChem.EmbedMolecule(mol)
+        AllChem.UFFOptimizeMolecule(mol)
 
-    mb = Chem.MolToMolBlock(mol)
+        mb = Chem.MolToMolBlock(mol)
 
-    view = py3Dmol.view(width=500, height=500)
-    view.addModel(mb, "mol")
-    view.setStyle({"stick": {}})
-    view.zoomTo()
+        view = py3Dmol.view(width=500, height=500)
+        view.addModel(mb, "mol")
+        view.setStyle({"stick": {}})
+        view.zoomTo()
 
 
-    html = view._make_html()
+        html = view._make_html()
 
-    with open("./static/molekula.html", "w") as f:
-        f.write(html)
+        with open("./static/molekula.html", "w") as f:
+            f.write(html)
+            
+    except Exception as e:
+        return render(request, 'twoja_strona.html', {
+            'error_message': "Nie udało się wygenerować modelu 3D dla tej cząsteczki. Może być ona niemożliwa chemicznie.",
+            'kod': kod
+        })
 
     return render(request, 'main.html', context)
 
