@@ -2,3 +2,4 @@ django
 rdkit
 py3Dmol
 gunicorn
+whitenoise
