@@ -40,14 +40,17 @@
 </div>
 
 <div class="container-right" style="height: 100%; width: 30%; float: right">
-    <h1>Przykładowe wzory smile:</h1>
-    <ol class="smile-examples">
-        <li>C</li>
-        <li>CCC</li>
-        <li>C1CCC1</li>
-        <li>CC(=O)CC</li>
-        <li>CCCC1CC1</li>
-    </ol>
+<div class="instructions" style="background: #f8f9fa; padding: 15px; border-radius: 8px; font-size: 0.9em; line-height: 1.4;">
+    <h3 style="margin-top: 0;">Jak pisać w SMILES?</h3>
+    <ul style="padding-left: 20px;">
+        <li><strong>Pierwiastki:</strong> Używaj symboli z układu okresowego (np. <code>C</code>, <code>N</code>, <code>O</code>, <code>S</code>).</li>
+        <li><strong>Wiązania:</strong> Pojedyncze są domyślne. Podwójne to <code>=</code> (np. <code>C=O</code>), a potrójne to <code>#</code>.</li>
+        <li><strong>Rozgałęzienia:</strong> Grupy boczne zapisuj w nawiasach, np. <code>CC(O)C</code> to izopropanol.</li>
+        <li><strong>Pierścienie:</strong> Zamknij cykl, dodając tę samą cyfrę przy atomach początkowym i końcowym, np. <code>C1CCCC1</code> to cyklopentan.</li>
+        <li><strong>Aromatyczność:</strong> Małe litery oznaczają atomy w pierścieniu aromatycznym, np. <code>c1ccccc1</code> to benzen.</li>
+    </ul>
+    <p style="font-style: italic; color: #555;">Wodory są zazwyczaj dodawane automatycznie przez program!</p>
+</div>
 
 <div class="categories-container">
     <form action="/main/" method="GET">
