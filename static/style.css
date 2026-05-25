@@ -213,3 +213,28 @@ iframe {
 .iframe-container a:hover {
     text-decoration: underline;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container-left, .container-right {
+    flex: 1; /* To wypchnie stopkę na dół, jeśli zawartości jest mało */
+}
+
+.main-footer {
+    clear: both; /* Zapobiega nakładaniu się na kontenery z float: left/right */
+    background-color: #343a40; /* Ciemny, elegancki kolor */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px; /* Odstęp od reszty zawartości */
+    width: 100%;
+    border-top: 3px solid #007bff; /* Akcent kolorystyczny pasujący do przycisków */
+}
+
+.main-footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
