@@ -6,18 +6,25 @@
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background-color: #f0f4f8;
-    color: #1e293b;
     display: flex;
+    flex-direction: column; /* Ustawia zawartość (content + footer) pionowo */
     min-height: 100vh;
-    padding: 25px;
-    gap: 25px;
+    margin: 0;
+    padding: 0; /* Usunąłem padding stąd, damy go do contentu */
+    background-color: #f0f4f8;
 }
 
-/* --- Kolumna lewa (Panel Główny) --- */
+.main-content {
+    display: flex; /* Ustawia lewy i prawy kontener obok siebie */
+    flex: 1;       /* Rozciąga ten kontener, aby stopka zawsze była na dole */
+    gap: 25px;
+    padding: 25px;
+    width: 100%;
+}
+
+/* --- Poprawka kolumn --- */
 .container-left {
-    flex: 6; /* Proporcja szerokości */
+    flex: 7; /* 70% szerokości */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -83,7 +90,7 @@ body {
 
 /* --- Kolumna prawa (Menu Wyboru) --- */
 .container-right {
-    flex: 4; /* Nieco szersza, aby zmieścić opisy i selecty */
+    flex: 3; /* 30% szerokości */
     background: #ffffff;
     padding: 25px;
     border-radius: 12px;
@@ -91,8 +98,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-height: calc(100vh - 50px);
-    overflow-y: auto; /* Przewijanie prawej kolumny, jeśli wykroczy poza ekran */
+    /* Usuwamy stąd overflow-y, jeśli chcesz, żeby cała strona się przewijała */
 }
 
 .container-right h1 {
@@ -213,28 +219,12 @@ iframe {
 .iframe-container a:hover {
     text-decoration: underline;
 }
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-.container-left, .container-right {
-    flex: 1; /* To wypchnie stopkę na dół, jeśli zawartości jest mało */
-}
-
+/* --- Stopka --- */
 .main-footer {
-    clear: both; /* Zapobiega nakładaniu się na kontenery z float: left/right */
-    background-color: #343a40; /* Ciemny, elegancki kolor */
+    background-color: #343a40;
     color: white;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px; /* Odstęp od reszty zawartości */
     width: 100%;
-    border-top: 3px solid #007bff; /* Akcent kolorystyczny pasujący do przycisków */
-}
-
-.main-footer p {
-    margin: 0;
-    font-size: 0.9em;
+    border-top: 3px solid #2563eb;
 }
