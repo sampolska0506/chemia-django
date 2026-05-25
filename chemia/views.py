@@ -60,7 +60,7 @@ def main(request):
             f.write(html)
             
     except Exception as e:
-        return render(request, 'twoja_strona.html', {
+        return render(request, 'main.html', {
             'error_message': "Nie udało się wygenerować modelu 3D dla tej cząsteczki. Może być ona niemożliwa chemicznie.",
             'kod': kod
         })
