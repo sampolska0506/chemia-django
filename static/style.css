@@ -16,7 +16,6 @@ body {
 
 .main-content {
     display: flex; /* Ustawia lewy i prawy kontener obok siebie */
-    flex: 1;       /* Rozciąga ten kontener, aby stopka zawsze była na dole */
     gap: 25px;
     padding: 25px;
     width: 100%;
