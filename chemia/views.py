@@ -27,6 +27,13 @@ def main(request):
     smiles = kod
 
     mol = Chem.MolFromSmiles(smiles)
+
+    if mol is None:
+        return render(request, 'main.html', {
+            'error_message': "Wprowadzono niepoprawny kod SMILES. Spróbuj ponownie!",
+            'kod': kod
+        })
+    
     mol = Chem.AddHs(mol)
 
     print("MOL: ", mol)
